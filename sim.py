@@ -113,6 +113,13 @@ class CountedShoe(Shoe):
     def true(self):
         return self.count/(len(self.cards)/13/4)
 
+class dealer:
+    def __init__(self) -> None:
+        pass
+
+class player:
+    def __init__(self,spread) -> None:
+        self.spread = spread
 
 for _ in range(10):
     h = Hand()
