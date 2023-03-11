@@ -93,9 +93,26 @@ class Shoe:
     def penetration(self):
         return 1-(len(self.cards)/self.decks/13/4)
 
-
-
+class CountedShoe(Shoe):
+    def __init__(self, decks) -> None:
+        self.count = 0
+        super().__init__(decks)
     
+    def draw(self):
+        card = super().draw()
+        self.update_count(card)
+        return card
+    
+    def update_count(self,card):
+        if 2<=card.card<=6:
+            self.count+=1
+        elif 10<=card.card<=13 or card.card == 1:
+            self.count -=1
+    
+    @property
+    def true(self):
+        return self.count/(len(self.cards)/13/4)
+
 
 for _ in range(10):
     h = Hand()
@@ -103,7 +120,7 @@ for _ in range(10):
         h.add_card(Card(randint(1,13)))
         print(h.value, h.soft, str(h))
 
-s = Shoe(8)
+s = CountedShoe(8)
 for _ in range(400):
-    print(str(s.draw()),s.penetration)
+    print(str(s.draw()),s.penetration,s.count,s.true)
 print(str(s))
