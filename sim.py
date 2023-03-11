@@ -104,6 +104,6 @@ for _ in range(10):
         print(h.value, h.soft, str(h))
 
 s = Shoe(8)
-for _ in range(90):
-    print(str(s.draw()))
+for _ in range(400):
+    print(str(s.draw()),s.penetration)
 print(str(s))
