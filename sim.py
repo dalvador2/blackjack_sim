@@ -3,6 +3,7 @@ from random import randint
 from sim_classes import *
 
 
+x = Player(10)
 
 
 for _ in range(10):
